@@ -7603,10 +7603,7 @@ cdef class FMUModelME2(FMUModelBase2):
         return enterEventMode==FMI2_TRUE, terminateSimulation==FMI2_TRUE
     
     cdef int __get_continuous_states(self, FMIL.fmi2_real_t[:] ndx):
-        if self._nContinuousStates > 0:
-            return FMIL.fmi2_import_get_continuous_states(self._fmu, &ndx[0] ,self._nContinuousStates)
-        else:
-            return FMIL.fmi2_import_get_continuous_states(self._fmu, NULL ,self._nContinuousStates)
+        return FMIL.fmi2_import_get_continuous_states(self._fmu, &ndx[0] ,self._nContinuousStates)
     
     def _get_continuous_states(self):
         """
@@ -7686,10 +7683,7 @@ cdef class FMUModelME2(FMUModelBase2):
     """)
     
     cdef int _get_derivatives(self, FMIL.fmi2_real_t[:] values):
-        if self._nContinuousStates > 0:
-            return FMIL.fmi2_import_get_derivatives(self._fmu, &values[0], self._nContinuousStates)
-        else:
-            return FMIL.fmi2_import_get_derivatives(self._fmu, NULL, self._nContinuousStates)
+        return FMIL.fmi2_import_get_derivatives(self._fmu, &values[0], self._nContinuousStates)
         
     cpdef get_derivatives(self):
         """
