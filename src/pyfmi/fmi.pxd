@@ -43,7 +43,7 @@ cdef class ModelBase:
     cdef public object _additional_logger
     cdef public object _max_log_size_msg_sent
     cdef public unsigned long long int _current_log_size, _max_log_size
-    
+    cdef public object alg
     cdef _logger(self, FMIL.jm_string module, int log_level, FMIL.jm_string message) with gil
 
 

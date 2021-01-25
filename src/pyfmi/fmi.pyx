@@ -266,6 +266,7 @@ cdef class ModelBase:
 
         # initialize algorithm
         alg = algorithm(self, options)
+        self.alg = alg
         # solve optimization problem/initialize
         alg.solve()
         # get and return result
@@ -305,6 +306,7 @@ cdef class ModelBase:
         try:
             # initialize algorithm
             alg = algorithm(start_time, final_time, input, self, options)
+            self.alg = alg
             # simulate
             alg.solve()
         except:
@@ -350,7 +352,9 @@ cdef class ModelBase:
         
         try:
             # initialize algorithm
+            
             alg = algorithm(parameters, measurements, input, self, options)
+            self.alg = alg
             # simulate
             alg.solve()
         except:
